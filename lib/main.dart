@@ -1,9 +1,16 @@
+import 'package:fitbangapp/database/database.dart';
 import 'package:fitbangapp/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  runApp(const App());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final database = await connectIsar();
+  runApp(RepositoryProvider(
+    create: (context) => database,
+    child: const App(),
+  ));
 }
 
 class App extends StatelessWidget {
