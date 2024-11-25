@@ -1,4 +1,5 @@
 import 'package:fitbangapp/database/database.dart';
+import 'package:fitbangapp/home.dart';
 import 'package:fitbangapp/onboarding/ui/onboarding_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,7 +25,11 @@ class App extends StatelessWidget {
         primarySwatch: Colors.grey,
         fontFamily: GoogleFonts.inter().fontFamily,
       ),
-      home: const OnboardingPage(),
+      initialRoute: '/onboarding',
+      routes: {
+        '/onboarding': (context) => const OnboardingPage(),
+        '/home': (context) => const HomePage(),
+      },
     );
   }
 }

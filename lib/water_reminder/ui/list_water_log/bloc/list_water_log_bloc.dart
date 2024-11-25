@@ -18,8 +18,10 @@ class ListWaterLogBloc extends Bloc<ListWaterLogEvent, ListWaterLogState> {
     });
 
     on<WaterLogsStreamSubRequested>((event, emit) async {
-      await emit.forEach(repository.logsStream,
-          onData: (data) => ListWaterLogSuccess(data));
+      await emit.forEach(
+        repository.logsStream,
+        onData: (data) => ListWaterLogSuccess(data),
+      );
     });
   }
 

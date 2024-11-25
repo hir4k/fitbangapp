@@ -5,6 +5,7 @@ import 'package:fitbangapp/water_reminder/ui/list_water_log/bloc/list_water_log_
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class WaterLogListView extends StatelessWidget {
   const WaterLogListView({super.key});
@@ -26,6 +27,9 @@ class WaterLogListView extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               itemCount: state.waterLogs.length,
               itemBuilder: (context, index) {
+                final waterLog = state.waterLogs[index];
+                final timestamp =
+                    DateFormat('hh:mm a').format(waterLog.createdAt);
                 return Container(
                   padding: const EdgeInsets.all(12),
                   decoration: const BoxDecoration(
@@ -34,8 +38,8 @@ class WaterLogListView extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(state.waterLogs[index].amount.toString()),
-                      Text(state.waterLogs[index].createdAt.toString()),
+                      Text("${waterLog.amount} ml"),
+                      Text(timestamp),
                     ],
                   ),
                 );
